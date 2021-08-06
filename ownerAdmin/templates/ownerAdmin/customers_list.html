@@ -1,0 +1,29 @@
+{% extends 'ownerAdmin/base.html' %}
+{% block title %} Customers List {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for customer in Customers %}
+                <div class="content col-12">
+                    <img class="img-responsive" src="#">
+
+                    {% if request.user.is_authenticated  and  user.is_superuser  %}
+                        <!-- <button class="btn btn-primary"><a href="{% url 'edit_employee' staff_name employee.Name %}">Edit</a></button> -->
+                        <button class="btn btn-success"><a href="{% url 'delete_customer' %}">Delete</a></button>
+                    {% endif %}
+
+
+                    <div class="details ">
+                        <span>First Name: {{ customer.first_name }}</span>
+                        <span>Last Name: {{ customer.last_name }}</span>
+                        <span>Email: {{ customer.email }</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+{% endblock %}
